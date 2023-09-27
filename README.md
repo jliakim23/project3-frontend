@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Travel Advisor - React Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+For our SEI Project #3, we'll be building an app to assist in planning trips. The main features will help users be more prepared and organized with packing and budgeting. As stretch golas, we've got ideas to integrate Google Maps to find places to stay and eat, and ChatGPT to make packing & budgeting suggestions.
 
-## Available Scripts
+### User Stories
 
-In the project directory, you can run:
+- _As a user,_ I want to be able to login.
+  - _As a user_, I want to be able to edit my name and info.
+- _As a user_, I want to see a calendar of my trips.
+- _As a user_, I want to start planning a new trip.
+  - _As a user_, I want to edit the details of my trip.
+  - _As a user_, I want to delete my trip, in case it gets cancelled.
+- _As a user_, I want to have an editable checklist, to help plan what to pack.
+- _As a user_, I want to plan out the trip's budget.
 
-### `npm start`
+### Pages _(React Router)_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Login / Home Screen
+- Calendar / Dashboard
+- Trip show page
+- Trip's Budget
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Technologies Used
 
-### `npm test`
+- CSS
+- JavaScript
+- React / React Router
+- _Stretch goals:_
+  - GPT / OpenAI _(for helping with packing lists & budgeting)_
+  - Google Maps _(for finding lodging and dining options)_
+  - Skeleton / Bootstrap
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### User Interface Wireframe
 
-### `npm run build`
+![Wireframe](public/assets/Frontend_Wireframe.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Related Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Backend Repo](https://github.com/jliakim23/project3-backend)
+- [Project Trello](https://trello.com/b/HFDgCYOP/trip-advisor)
