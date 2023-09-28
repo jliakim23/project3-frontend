@@ -2,8 +2,8 @@ import React from 'react'
 
 const Calendar = (props) => {
   return (
-    <div class="calendar-container">
-    <div class="month-header">September 2023</div>
+    <div class=".container">
+    <div class="header">September 2023</div>
     <table>
         <tr>
             <th>Sun</th>
