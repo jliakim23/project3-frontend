@@ -61,9 +61,7 @@ const Calendar = (props) => {
         </tr>
         
     </table>
-    <input type="number" class="budget" placeholder="Enter Budget for the Month" />
-    <button class="budget-button">Save Budget</button>
-    <div class="budget-total">Total Budget: $0</div>
+
 </div>
   )
 }
