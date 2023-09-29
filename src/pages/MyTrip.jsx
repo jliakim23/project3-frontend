@@ -121,10 +121,10 @@ const DUMMY_TRIP = {
   },
   budget: [
     {
-      foodAmount: 0,
-      attractionAmount: 0,
-      accomadationAmount: 0,
-      totalAmount: 0,
+      foodAmount: 500,
+      attractionAmount: 500,
+      accomadationAmount: 1000,
+      totalAmount: 2000,
     },
   ],
 };
@@ -182,11 +182,11 @@ const MyTrip = () => {
 
   return (
     <div>
-      <h2>{DUMMY_TRIP.Title}</h2>
-      <p>{DUMMY_TRIP.Description}</p>
+      <h1 className="header">{DUMMY_TRIP.Title}</h1>
       <p>
         {formatDate(DUMMY_TRIP.startDate)} - {formatDate(DUMMY_TRIP.endDate)}
       </p>
+      <p>{DUMMY_TRIP.Description}</p>
       <Checklist list={DUMMY_TRIP.checklist.items} listName="Things to Pack" />
       <Budget details={DUMMY_TRIP.budget[0]} />
     </div>
