@@ -8,11 +8,15 @@ import MyTrip from "./pages/MyTrip";
 function App() {
   return (
     <div>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Trip" element={<MyTrip />} />
-      </Routes>
+      <header>
+        <Nav />
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Trip" element={<MyTrip />} />
+        </Routes>
+      </main>
     </div>
   );
 }

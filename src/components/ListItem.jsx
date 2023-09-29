@@ -17,7 +17,7 @@ const ListItem = ({ item, idx, deleteItem }) => {
   };
 
   return (
-    <div onClick={onClick}>
+    <li onClick={onClick}>
       <div
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
@@ -39,7 +39,7 @@ const ListItem = ({ item, idx, deleteItem }) => {
           ""
         )}
       </div>
-    </div>
+    </li>
   );
 };
 
