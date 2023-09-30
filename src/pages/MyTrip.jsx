@@ -1,135 +1,18 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Checklist from "../components/Checklist";
 import Budget from "../components/Budget";
 
-const DUMMY_TRIP = {
-  Title: "Trip to Japan",
-  Description: "Business trip to Osaka",
-  startDate: new Date(2023, 10, 9),
-  endDate: new Date(2023, 10, 16),
-  checklist: {
-    items: [
-      {
-        item: "Passport",
-        checked: false,
-      },
-      {
-        item: "Toothbrush",
-        checked: false,
-      },
-      {
-        item: "Clothes",
-        checked: false,
-      },
-      {
-        item: "Shoes",
-        checked: false,
-      },
-      {
-        item: "Phone",
-        checked: false,
-      },
-      {
-        item: "Charger",
-        checked: false,
-      },
-      {
-        item: "Wallet",
-        checked: false,
-      },
-      {
-        item: "Headphones",
-        checked: false,
-      },
-      {
-        item: "Glasses",
-        checked: false,
-      },
-      {
-        item: "Medicine",
-        checked: false,
-      },
-      {
-        item: "Camera",
-        checked: false,
-      },
-      {
-        item: "Laptop",
-        checked: false,
-      },
-      {
-        item: "Books",
-        checked: false,
-      },
-      {
-        item: "Snacks",
-        checked: false,
-      },
-      {
-        item: "Water Bottle",
-        checked: false,
-      },
-      {
-        item: "Umbrella",
-        checked: false,
-      },
-      {
-        item: "Sunscreen",
-        checked: false,
-      },
-      {
-        item: "Sunglasses",
-        checked: false,
-      },
-      {
-        item: "Hat",
-        checked: false,
-      },
-      {
-        item: "Pajamas",
-        checked: false,
-      },
-      {
-        item: "Bathing Suit",
-        checked: false,
-      },
-      {
-        item: "First Aid Kit",
-        checked: false,
-      },
-      {
-        item: "Hand Sanitizer",
-        checked: false,
-      },
-      {
-        item: "Travel Pillow",
-        checked: false,
-      },
-      {
-        item: "Travel Documents",
-        checked: false,
-      },
-      {
-        item: "Travel Insurance",
-        checked: false,
-      },
-      {
-        item: "Travel Tickets",
-        checked: false,
-      },
-    ],
-  },
-  budget: [
-    {
-      foodAmount: 500,
-      attractionAmount: 500,
-      accomadationAmount: 1000,
-      totalAmount: 2000,
-    },
-  ],
-};
+const MyTrip = ({ data }) => {
+  const params = useParams();
 
-const MyTrip = () => {
+  const trip = data.find((trip) => trip.id == params.id);
+
+  console.log(trip);
+
+  trip.startDate = new Date(trip.startDate);
+  trip.endDate = new Date(trip.endDate);
+
   const formatDate = (date) => {
     const weekdayNumber = date.getDay();
     const month = date.getMonth();
@@ -180,15 +63,26 @@ const MyTrip = () => {
     return `${weekdayNames[weekdayNumber]}, ${monthNames[month]} ${dateNumber}${numberSuffix}`;
   };
 
+  const formatDateRange = (startDate, endDate) => {
+    const start = formatDate(startDate);
+    const startYear = startDate.getFullYear();
+    const end = formatDate(endDate);
+    const endYear = endDate.getFullYear();
+
+    if (startYear === endYear) {
+      return `${start} - ${end} ${startYear}`;
+    } else {
+      return `${start} ${startYear} - ${end} ${endYear}`;
+    }
+  };
+
   return (
     <div>
-      <h1 className="header">{DUMMY_TRIP.Title}</h1>
-      <p>
-        {formatDate(DUMMY_TRIP.startDate)} - {formatDate(DUMMY_TRIP.endDate)}
-      </p>
-      <p>{DUMMY_TRIP.Description}</p>
-      <Checklist list={DUMMY_TRIP.checklist.items} listName="Things to Pack" />
-      <Budget details={DUMMY_TRIP.budget[0]} />
+      <h1 className="header">{trip.Title}</h1>
+      <p>{formatDateRange(trip.startDate, trip.endDate)}</p>
+      <p>{trip.Description}</p>
+      <Checklist list={trip.checklist.items} listName="Things to Pack" />
+      <Budget details={trip.budget[0]} />
     </div>
   );
 };
