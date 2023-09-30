@@ -1,10 +1,12 @@
 import React from 'react'
-import Calendar from '../components/Calendar'
+import MyCalendar from '../components/MyCalendar'
+
+
 
 const Home = () => {
   return (
     <div>
-      <Calendar />
+      <MyCalendar />
     </div>
   );
 };
