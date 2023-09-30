@@ -1,8 +1,8 @@
 [
   {
-    "id": "u8tW4f",
-    "Title": "Business trip to Japan",
-    "Description": "Conference in Osaka and sightseeing in Kyoto",
+    "id": "1",
+    "Title": "Trip to Japan",
+    "Description": "Conference in Osaka, sightseeing in Kyoto",
     "startDate": "October 9, 2023",
     "endDate": "October 16, 2023",
     "checklist": {
@@ -67,11 +67,11 @@
     ]
   },
   {
-    "id": "Te4jI0",
+    "id": "2",
     "Title": "New Year's in Disney World",
     "Description": "Family vacation to Disney World for New Year's",
     "startDate": "December 27, 2023",
-    "endDate": "January 2, 2024",
+    "endDate": "January 3, 2024",
     "checklist": {
       "items": [
         {
@@ -134,11 +134,12 @@
     ]
   },
   {
-    "id": "5Bdl2Q",
+    "id": "3",
     "Title": "Weekend in Cape Cod",
     "Description": "Short getaway to Cape Cod for the weekend",
-    "startDate": "June 12, 2024",
-    "endDate": "June 14, 2024",
+    "startDate": "September 15, 2023",
+    "endDate": "September 17, 2023",
+
     "checklist": {
       "items": [
         {
@@ -199,7 +200,7 @@
       {
         "foodAmount": 200,
         "attractionAmount": 300,
-        "accommodationAmount": 400,
+        "accomadationAmount": 400,
         "totalAmount": 900
       }
     ]
