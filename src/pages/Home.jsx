@@ -1,8 +1,12 @@
 import React from 'react'
+import Calendar from '../components/Calendar'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>Home
+      <Calendar />
+      </div>
+    
   )
 }
 
