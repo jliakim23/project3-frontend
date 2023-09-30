@@ -6,9 +6,9 @@ import Budget from "../components/Budget";
 const MyTrip = ({ data }) => {
   const params = useParams();
 
-  const trip = data.find((trip) => trip.id == params.id);
-
-  console.log(trip);
+  const trip = data.find(
+    (trip) => trip.Title === params.title.replace(/_/g, " ")
+  );
 
   trip.startDate = new Date(trip.startDate);
   trip.endDate = new Date(trip.endDate);

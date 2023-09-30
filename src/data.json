@@ -61,7 +61,7 @@
       {
         "foodAmount": 300,
         "attractionAmount": 200,
-        "accommodationAmount": 500,
+        "accomadationAmount": 500,
         "totalAmount": 1000
       }
     ]

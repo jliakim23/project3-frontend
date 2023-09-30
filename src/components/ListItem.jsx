@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import ModalInput from "./ModalInput";
 
 const ListItem = ({ item, idx, deleteItem }) => {
   const [showDeleteBtn, setShowDeleteBtn] = useState(false);
+  const [value, setValue] = useState(item);
 
   const onClick = (e) => {
     console.log(item);
@@ -21,9 +23,9 @@ const ListItem = ({ item, idx, deleteItem }) => {
       <div
         onMouseOver={onMouseOver}
         onMouseOut={onMouseOut}
-        // style={{ position: "relative" }}
+        style={{ display: "flex" }}
       >
-        {item}{" "}
+        <ModalInput type="text" value={value} setValue={setValue} />{" "}
         {showDeleteBtn ? (
           <button
             onClick={onClick}

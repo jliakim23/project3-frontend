@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/trips" element={<TripIndex data={data} />} />
-          <Route path="/trips/:id" element={<MyTrip data={data} />} />
+          <Route path="/trips/:title" element={<MyTrip data={data} />} />
         </Routes>
       </main>
     </div>

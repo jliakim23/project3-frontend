@@ -6,9 +6,10 @@ const TripIndex = ({ data }) => {
     <div>
       <ul>
         {data.map((trip) => {
+          const titleUrl = trip.Title.replace(/\s+/g, "_");
           return (
             <li key={trip.id}>
-              <Link to={`/trips/${trip.id}`}>{trip.Title}</Link>
+              <Link to={`/trips/${titleUrl}`}>{trip.Title}</Link>
             </li>
           );
         })}
