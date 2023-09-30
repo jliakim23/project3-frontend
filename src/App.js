@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import MyTrip from "./pages/MyTrip";
 import TripIndex from "./pages/TripIndex";
+import AuthPage from './pages/AuthPage/AuthPage'
 
 function App() {
   return (
@@ -15,11 +16,13 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+    <Route path="/" element={<AuthPage/>}  />
+          <Route path="/home" element={<Home />} />
           <Route path="/trips" element={<TripIndex data={data} />} />
           <Route path="/trips/:title" element={<MyTrip data={data} />} />
         </Routes>
       </main>
+
     </div>
   );
 }

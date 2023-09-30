@@ -1,5 +1,5 @@
-import React from "react";
-import Calendar from "../components/Calendar";
+import React from 'react'
+import Calendar from '../components/Calendar'
 
 const Home = () => {
   return (
@@ -8,5 +8,6 @@ const Home = () => {
     </div>
   );
 };
+
 
 export default Home;
