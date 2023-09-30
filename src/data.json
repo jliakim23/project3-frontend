@@ -59,10 +59,10 @@
     },
     "budget": [
       {
-        "foodAmount": 300,
-        "attractionAmount": 200,
-        "accommodationAmount": 500,
-        "totalAmount": 1000
+        "foodAmount": 500,
+        "attractionAmount": 500,
+        "accomadationAmount": 1000,
+        "totalAmount": 2000
       }
     ]
   },
@@ -139,6 +139,7 @@
     "Description": "Short getaway to Cape Cod for the weekend",
     "startDate": "September 15, 2023",
     "endDate": "September 17, 2023",
+
     "checklist": {
       "items": [
         {
