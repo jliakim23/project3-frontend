@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ModalInput = ({ type, value, setValue, name }) => {
   const [currentValue, setCurrentValue] = useState(value);
