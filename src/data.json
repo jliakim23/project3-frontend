@@ -1,0 +1,208 @@
+[
+  {
+    "id": "1",
+    "Title": "Trip to Japan",
+    "Description": "Conference in Osaka, sightseeing in Kyoto",
+    "startDate": "October 9, 2023",
+    "endDate": "October 16, 2023",
+    "checklist": {
+      "items": [
+        {
+          "item": "Passport",
+          "checked": false
+        },
+        {
+          "item": "Clothes",
+          "checked": false
+        },
+        {
+          "item": "Phone",
+          "checked": false
+        },
+        {
+          "item": "Wallet",
+          "checked": false
+        },
+        {
+          "item": "Medicine",
+          "checked": false
+        },
+        {
+          "item": "Camera",
+          "checked": false
+        },
+        {
+          "item": "Books",
+          "checked": false
+        },
+        {
+          "item": "Snacks",
+          "checked": false
+        },
+        {
+          "item": "Travel Pillow",
+          "checked": false
+        },
+        {
+          "item": "Travel Documents",
+          "checked": false
+        },
+        {
+          "item": "Travel Insurance",
+          "checked": false
+        },
+        {
+          "item": "Travel Tickets",
+          "checked": false
+        }
+      ]
+    },
+    "budget": [
+      {
+        "foodAmount": 500,
+        "attractionAmount": 500,
+        "accomadationAmount": 1000,
+        "totalAmount": 2000
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "Title": "New Year's in Disney World",
+    "Description": "Family vacation to Disney World for New Year's",
+    "startDate": "December 27, 2023",
+    "endDate": "January 3, 2024",
+    "checklist": {
+      "items": [
+        {
+          "item": "Park Tickets",
+          "checked": false
+        },
+        {
+          "item": "Hotel Reservations",
+          "checked": false
+        },
+        {
+          "item": "Disney Costumes",
+          "checked": false
+        },
+        {
+          "item": "Winter Clothes",
+          "checked": false
+        },
+        {
+          "item": "Camera",
+          "checked": false
+        },
+        {
+          "item": "Cash for Souvenirs",
+          "checked": false
+        },
+        {
+          "item": "Snacks",
+          "checked": false
+        },
+        {
+          "item": "Gifts",
+          "checked": false
+        },
+        {
+          "item": "Christmas Decorations",
+          "checked": false
+        },
+        {
+          "item": "Travel Documents",
+          "checked": false
+        },
+        {
+          "item": "Travel Insurance",
+          "checked": false
+        },
+        {
+          "item": "Flight Tickets",
+          "checked": false
+        }
+      ]
+    },
+    "budget": [
+      {
+        "foodAmount": 800,
+        "attractionAmount": 1000,
+        "accomadationAmount": 2000,
+        "totalAmount": 3800
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "Title": "Weekend in Cape Cod",
+    "Description": "Short getaway to Cape Cod for the weekend",
+    "startDate": "September 15, 2023",
+    "endDate": "September 17, 2023",
+
+    "checklist": {
+      "items": [
+        {
+          "item": "Beach Gear",
+          "checked": false
+        },
+        {
+          "item": "Sunscreen",
+          "checked": false
+        },
+        {
+          "item": "Swimsuits",
+          "checked": false
+        },
+        {
+          "item": "Towels",
+          "checked": false
+        },
+        {
+          "item": "Picnic Supplies",
+          "checked": false
+        },
+        {
+          "item": "Biking Gear",
+          "checked": false
+        },
+        {
+          "item": "Hiking Shoes",
+          "checked": false
+        },
+        {
+          "item": "Local Maps",
+          "checked": false
+        },
+        {
+          "item": "Cash",
+          "checked": false
+        },
+        {
+          "item": "Hotel Reservations",
+          "checked": false
+        },
+        {
+          "item": "Travel Documents",
+          "checked": false
+        },
+        {
+          "item": "Travel Insurance",
+          "checked": false
+        },
+        {
+          "item": "Gas for Car",
+          "checked": false
+        }
+      ]
+    },
+    "budget": [
+      {
+        "foodAmount": 200,
+        "attractionAmount": 300,
+        "accomadationAmount": 400,
+        "totalAmount": 900
+      }
+    ]
+  }
+]

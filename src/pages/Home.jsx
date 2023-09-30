@@ -3,11 +3,11 @@ import Calendar from '../components/Calendar'
 
 const Home = () => {
   return (
-    <div>Home
+    <div>
       <Calendar />
-      </div>
-    
-  )
-}
+    </div>
+  );
+};
 
-export default Home
+
+export default Home;
