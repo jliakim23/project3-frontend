@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import MyTrip from "./pages/MyTrip";
 import TripIndex from "./pages/TripIndex";
 import AuthPage from './pages/AuthPage/AuthPage'
+import { Calendar } from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 function App() {
   return (

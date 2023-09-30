@@ -1,74 +1,67 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  min-height: 200px;
+/* .calendar.container {
+ margin: 20px auto;
+ padding: 20px;
+ width: 80%;
+ border-radius: 10px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #148619;
+  overflow: hidden;
 }
 
-.header {
-  /* font-size: 2rem; */
-  font-weight: bold;
-  color: #444;
-  margin-bottom: 20px;
+.rbc-calendar {
+ height: 100%;
+ border: none;
+ text-align: center;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
+.rbc-row {
+  border-bottom: 1px solid #ddd;
+  text-align: justify;
 }
 
-th,
-td {
-  padding: 10px;
+.rbc-date-cell {
+  border-right: 1px solid #ddd;
   text-align: center;
-  border: 1px solid #ddd;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-.calendar td {
-  height: 95px;
-  width: 14.28%;
-}
-
-.budget td {
-  height: 50px;
-  width: 25%;
-}
-
-.current-day {
-  background-color: #fdd;
-}
-
-/* .budget {
-  margin-top: 20px;
   padding: 10px;
-  width: 80%;
-  font-size: 1rem;
-} */
+  height: 100px;
+  position: relative;
+}
 
-/* .budget-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #4caf50;
+
+.rbc-header {
+  background-color: #148619;
+  text-align: center;
   color: white;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
+.rbc-event {
+  background-color: #ffc107;
+  color: #212121;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 3px;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-} */
+  text-align: center;
+}
 
-/* .budget-button:hover {
-  background-color: #45a049;
-} */
+.rbc-month-view {
+  border-radius: 16px;
+  overflow:hidden;
+border: 1px solid #ddd;
+}
 
-/* .budget-total {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  color: #333;
+.rbc-month-view::before {
+  content: attr(data-date);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #f0f0f0;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 14px;
 } */
 
 .nav {
@@ -81,3 +74,5 @@ th {
   padding: 10px;
   margin-bottom: 20px;
 }
+
+
