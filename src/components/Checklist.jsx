@@ -34,13 +34,13 @@ const Checklist = ({ listName, list }) => {
     setChecklist(updatedChecklist);
   };
 
-  const deleteItem = (idx) => {
-    console.log("this button should delete item w/ index", idx);
-    // const updatedChecklist = checklist.filter((item, i) => {
-    //   console.log(idx, i);
-    //   return i !== idx;
-    // });
-    // setChecklist(updatedChecklist);
+  const deleteItem = (value) => {
+    // console.log(value);
+    const updatedChecklist = checklist.filter((item) => {
+      console.log(value, item.item);
+      return value !== item.item;
+    });
+    setChecklist(updatedChecklist);
   };
 
   return (
@@ -61,6 +61,7 @@ const Checklist = ({ listName, list }) => {
               idx={idx}
               onSetValue={handleSetValue}
               deleteItem={deleteItem}
+              checklist={checklist}
             >
               {item.item}
             </ListItem>

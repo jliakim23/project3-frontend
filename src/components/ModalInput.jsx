@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ModalInput = ({ name, type, value, setValue }) => {
+const ModalInput = ({ name, type, value, setValue, checklist }) => {
   const [currentValue, setCurrentValue] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -17,6 +17,21 @@ const ModalInput = ({ name, type, value, setValue }) => {
         return;
       }
       setCurrentValue(parseFloat(currentValue).toFixed(2));
+    }
+    if (type === "todo") {
+      if (e.target.value === "") {
+        console.log("empty string");
+        setCurrentValue(value);
+        setIsEditing(false);
+        return;
+      }
+      const duplicate = checklist.find((item) => item.item === e.target.value);
+      if (duplicate) {
+        console.log("duplicate item");
+        setCurrentValue(value);
+        setIsEditing(false);
+        return;
+      }
     }
     setValue(e);
     setIsEditing(false);

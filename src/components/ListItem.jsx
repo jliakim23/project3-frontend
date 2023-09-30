@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import ModalInput from "./ModalInput";
 
-const ListItem = ({ item, idx, deleteItem, onSetValue }) => {
+const ListItem = ({ item, idx, deleteItem, onSetValue, checklist }) => {
   const [showDeleteBtn, setShowDeleteBtn] = useState(false);
-  const [value, setValue] = useState(item);
+  // const [value, setValue] = useState(item);
 
   const handleSetValue = (e) => {
-    setValue(e.target.value);
+    // setValue(e.target.value);
     onSetValue(e, idx);
   };
 
   const onClick = () => {
-    deleteItem(idx);
+    deleteItem(item);
+    // console.log(value);
   };
 
   const onMouseOver = () => {
@@ -31,19 +32,13 @@ const ListItem = ({ item, idx, deleteItem, onSetValue }) => {
       >
         <ModalInput
           name={item}
-          type="text"
-          value={value}
+          type="todo"
+          value={item}
           setValue={handleSetValue}
+          checklist={checklist}
         />{" "}
         {showDeleteBtn ? (
-          <button
-            onClick={onClick}
-            name="delete-btn"
-            // style={{
-            //   position: "absolute",
-            //   right: 0,
-            // }}
-          >
+          <button onClick={onClick} name="delete-btn">
             X
           </button>
         ) : (
