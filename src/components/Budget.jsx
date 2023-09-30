@@ -4,13 +4,35 @@ import ModalInput from "./ModalInput";
 const Budget = ({ details }) => {
   const [budget, setBudget] = useState(details);
 
-  const handleInputChange = (e) => {
-    console.log(e.target);
-    const { name, value } = e.target;
-    setBudget({
-      ...budget,
-      [name]: value,
-    });
+  const handleSetValue = (e) => {
+    // console.log(e.target);
+    let { name, value } = e.target;
+    value = Number(parseFloat(value));
+
+    if (name === "foodAmount") {
+      setBudget({
+        ...budget,
+        foodAmount: value,
+        totalAmount:
+          value + budget.attractionAmount + budget.accomadationAmount,
+      });
+    }
+
+    if (name === "attractionAmount") {
+      setBudget({
+        ...budget,
+        attractionAmount: value,
+        totalAmount: value + budget.foodAmount + budget.accomadationAmount,
+      });
+    }
+
+    if (name === "accomadationAmount") {
+      setBudget({
+        ...budget,
+        accomadationAmount: value,
+        totalAmount: value + budget.foodAmount + budget.attractionAmount,
+      });
+    }
   };
 
   return (
@@ -31,27 +53,27 @@ const Budget = ({ details }) => {
               <ModalInput
                 type="money"
                 name="foodAmount"
-                value={budget.foodAmount}
-                setValue={handleInputChange}
+                value={parseFloat(budget.foodAmount).toFixed(2)}
+                setValue={handleSetValue}
               />
             </td>
             <td>
               <ModalInput
                 type="money"
                 name="attractionAmount"
-                value={budget.attractionAmount}
-                setValue={handleInputChange}
+                value={parseFloat(budget.attractionAmount).toFixed(2)}
+                setValue={handleSetValue}
               />
             </td>
             <td>
               <ModalInput
                 type="money"
                 name="accomadationAmount"
-                value={budget.accomadationAmount}
-                setValue={handleInputChange}
+                value={parseFloat(budget.accomadationAmount).toFixed(2)}
+                setValue={handleSetValue}
               />
             </td>
-            <td>${budget.totalAmount}</td>
+            <td>${budget.totalAmount.toFixed(2)}</td>
           </tr>
         </tbody>
       </table>

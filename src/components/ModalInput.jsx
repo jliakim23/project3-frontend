@@ -1,15 +1,24 @@
 import { useState } from "react";
 
-const ModalInput = ({ type, value, setValue, name }) => {
+const ModalInput = ({ name, type, value, setValue }) => {
   const [currentValue, setCurrentValue] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleInputChange = (e) => {
     setCurrentValue(e.target.value);
-    type === "money" ? setValue(e) : setValue(e.target.value);
   };
 
-  const handleInputBlur = () => {
+  const handleSetValue = (e) => {
+    if (type === "money") {
+      if (Number.isNaN(parseFloat(e.target.value))) {
+        console.log("not a number");
+        setCurrentValue(value);
+        setIsEditing(false);
+        return;
+      }
+      setCurrentValue(parseFloat(currentValue).toFixed(2));
+    }
+    setValue(e);
     setIsEditing(false);
   };
 
@@ -17,9 +26,13 @@ const ModalInput = ({ type, value, setValue, name }) => {
     setIsEditing(true);
   };
 
+  const handleInputBlur = (e) => {
+    handleSetValue(e);
+  };
+
   const handleInputKeyDown = (e) => {
     if (e.key === "Enter") {
-      setIsEditing(false);
+      handleSetValue(e);
     }
   };
 
@@ -27,7 +40,7 @@ const ModalInput = ({ type, value, setValue, name }) => {
     <div>
       {isEditing ? (
         <input
-          name={name || "input"}
+          name={name}
           value={currentValue}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
