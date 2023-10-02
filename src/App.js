@@ -6,10 +6,11 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import MyTrip from "./pages/MyTrip";
 import TripIndex from "./pages/TripIndex";
-import AuthPage from './pages/AuthPage/AuthPage'
+import AuthPage from "./pages/AuthPage/AuthPage";
+import Signup from "./pages/AuthPage/Signup";
+import Login from "./pages/AuthPage/Login";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-
 
 
 function App() {
@@ -20,7 +21,10 @@ function App() {
       </header>
       <main>
         <Routes>
-    <Route path="/" element={<AuthPage/>}  />
+          <Route path="/" element={<AuthPage />}>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+          </Route>
           <Route path="/home" element={<Home data={data}/>} />
           <Route path="/trips" element={<TripIndex data={data} />} />
           <Route path="/trips/:title" element={<MyTrip data={data} />} />
