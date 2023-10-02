@@ -1,68 +1,74 @@
 import React from 'react';
-import { Calendar, momentLocalizer } from 'react-big-calendar'
-import moment from 'moment'
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop"
-import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css'; // Import the CSS
+import { useState } from 'react';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
+import moment from 'moment';
 
-const localizer = momentLocalizer(moment)
+const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
 
-class App extends React.Component {
-  state = {
-    events: [{ start: new Date(), end: new Date(), title: "Sample Event" }]
-  };
+const MyCalendar = ({data}) => {
+    const [ events,setEvents] = useState(data);
+    const event =data.map((event) => ({
+        id: event._id,
+        title: event.title,
+        start: new Date(event.startDate),
+        end: new Date(event.endDate),
+}));
 
-  handleSelect = ({ start, end }) => {
-    const title = window.prompt('New Event name');
-    if (title)
-      this.setState(prevState => ({
-        events: [...prevState.events, { start, end, title }],
-      }));
-  }
+    //     return (
+    //         <div>
+    //             <Calendar
+    //                 localizer={localizer}
+    //                 events={event}
+    //                 startAccessor="start"
+    //                 endAccessor="end"
+    //                 style={{ height: 500 }}
+    //             />
+    //         </div>
+    //     );
+    // };
 
-  onEventResize = (data) => {
-    const { start, end } = data.size;
-    this.setState((state) => {
-      const nextEvents = state.events.map(event => {
-        return (event.title === data.event.title) ? { ...event, start, end } : event;
-      });
-      return { events: nextEvents };
-    });
-  };
-
-  onEventDrop = (data) => {
-    const { start, end } = data;
-    this.setState((state) => {
-      const nextEvents = state.events.map(event => {
-        return (event.title === data.event.title) ? { ...event, start, end } : event;
-      });
-      return { events: nextEvents };
-    });
-  };
-
-  onSelectSlot = (slotInfo) => {
-    this.handleSelect(slotInfo);
-  }
-
-  render() {
+    const handleSelect = ({ start, end }) => {
+      const title = window.prompt('New Event name');
+      if (title) {
+        setEvents(prevEvents => [...prevEvents, { start, end, title }]);
+      }
+    }
+  
+    const onEventResize = (data) => {
+      const { start, end } = data.size;
+      setEvents(prevEvents => prevEvents.map(event =>
+        event.title === data.event.title ? { ...event, start, end } : event
+      ));
+    }
+  
+    const onEventDrop = (data) => {
+      const { start, end } = data;
+      setEvents(prevEvents => prevEvents.map(event =>
+        event.title === data.event.title ? { ...event, start, end } : event
+      ));
+    }
+  
     return (
-      <div className="App">
+      <div className="My">
         <DnDCalendar
           selectable
           defaultDate={moment().toDate()}
           defaultView="month"
-          events={this.state.events}
+          events={event}
           localizer={localizer}
-          onEventDrop={this.onEventDrop}
-          onEventResize={this.onEventResize}
-          onSelectSlot={this.onSelectSlot}
+          onEventDrop={onEventDrop}
+          onEventResize={onEventResize}
+          onSelectSlot={handleSelect}
           resizable
           style={{ height: "100vh" }}
         />
       </div>
     );
-  }
-}
+    };
 
-export default App;
+
+
+  export default MyCalendar;
