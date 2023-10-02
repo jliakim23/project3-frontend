@@ -26,7 +26,7 @@ const Signup = () => {
     });
 
     if (response.ok) {
-      setSignupStatus('Signup successful');
+      setSignupStatus('Now Login!');
     } else {
       setSignupStatus('Signup failed');
     }

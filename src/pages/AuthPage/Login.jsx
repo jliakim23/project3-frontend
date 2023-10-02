@@ -5,15 +5,17 @@ import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    email: "",
     password: "",
   });
 
   const [loginStatus, setLoginStatus] = useState(null);
   const navigate = useNavigate(); 
 
-  const handleFormSubmit = async () => {
-    const { name, password } = formData;
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    const { email, password } = formData;
 
     try {
       const response = await fetch("https://tripadvisor-backend.onrender.com/login", {
@@ -21,7 +23,7 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
@@ -53,11 +55,11 @@ const Login = () => {
           <CiMail style={{ margin: "0px 30px" }} />{" "}
           <input
             type="text"
-            name="name"
-            placeholder="Username"
-            value={formData.name}
+            name="email"
+            placeholder="Email"
+            value={formData.email}
             onChange={(e) =>
-              setFormData({ ...formData, name: e.target.value })
+              setFormData({ ...formData, email: e.target.value })
             }
           />
         </div>
