@@ -3,6 +3,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { CiMail } from "react-icons/ci";
 import { BiUser } from "react-icons/bi";
 
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -16,14 +17,13 @@ const Signup = () => {
     e.preventDefault(); 
 
 
-
     const response = await fetch('https://tripadvisor-backend.onrender.com/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
     if (response.ok) {
       setSignupStatus('Now Login!');

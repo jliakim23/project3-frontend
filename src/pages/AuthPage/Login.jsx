@@ -3,6 +3,7 @@ import { CiMail } from "react-icons/ci";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom'
 
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -18,7 +19,7 @@ const Login = () => {
     const { email, password } = formData;
 
     try {
-      const response = await fetch("https://tripadvisor-backend.onrender.com/login", {
+      const response = await fetch('https://tripadvisor-backend.onrender.com/login', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

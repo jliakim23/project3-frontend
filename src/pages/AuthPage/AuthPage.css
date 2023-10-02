@@ -1,19 +1,4 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .buttons-container {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-
-  
-  .buttons button:hover {
+.buttons button:hover {
     background-color: #a3b4c0;
   }
   
@@ -29,7 +14,7 @@
     justify-content: center;
     z-index: 1;
   }
-  
+
   .modal-content {
     background-color: #fff;
     padding: 20px;
@@ -37,11 +22,11 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
+
+  .buttons {
+   flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center; 
+    gap: 10px; 
   }
   
