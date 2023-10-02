@@ -3,10 +3,10 @@ import MyCalendar from '../components/MyCalendar'
 
 
 
-const Home = () => {
+const Home = ({data}) => {
   return (
     <div>
-      <MyCalendar />
+      <MyCalendar data={data}/>
     </div>
   );
 };

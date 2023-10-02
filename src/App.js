@@ -21,7 +21,7 @@ function App() {
       <main>
         <Routes>
     <Route path="/" element={<AuthPage/>}  />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home data={data}/>} />
           <Route path="/trips" element={<TripIndex data={data} />} />
           <Route path="/trips/:title" element={<MyTrip data={data} />} />
         </Routes>
