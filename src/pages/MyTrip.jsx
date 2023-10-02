@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Checklist from "../components/Checklist";
 import Budget from "../components/Budget";
+import { BsCalendarEvent } from "react-icons/bs";
+import { CgDetailsMore } from "react-icons/cg";
 
 const MyTrip = ({ data }) => {
   const params = useParams();
@@ -79,9 +81,14 @@ const MyTrip = ({ data }) => {
   return (
     <div>
       <h1 className="header">{trip.Title}</h1>
-      <p>{formatDateRange(trip.startDate, trip.endDate)}</p>
-      <p>{trip.Description}</p>
-      <Checklist list={trip.checklist.items} listName="Things to Pack" />
+      <p>
+        <BsCalendarEvent style={{ marginRight: 7 }} />
+        {formatDateRange(trip.startDate, trip.endDate)}
+      </p>
+      <p>
+        <CgDetailsMore style={{ marginRight: 5 }} /> {trip.Description}
+      </p>
+      <Checklist list={trip.checklist.items} type="to pack" />
       <Budget details={trip.budget[0]} />
     </div>
   );

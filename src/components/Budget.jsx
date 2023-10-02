@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ModalInput from "./ModalInput";
+import { TbPigMoney } from "react-icons/tb";
 
 const Budget = ({ details }) => {
   const [budget, setBudget] = useState(details);
@@ -37,7 +38,10 @@ const Budget = ({ details }) => {
 
   return (
     <div className="budget container">
-      <h2 className="header">Budget Planner</h2>
+      <h2 className="header">
+        <TbPigMoney style={{ marginRight: 10 }} />
+        Budget Planner
+      </h2>
       <table>
         <thead>
           <tr>
