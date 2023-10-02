@@ -11,8 +11,8 @@ const AuthPage = () => {
   };
 
   return (     
-    <div className="auth-container">
-       <div className="auth-buttons">
+    <div className="container">
+       <div className="buttons">
       <Login />
         {!isSignupVisible && (
           <button onClick={toggleSignupForm}>Register</button>
