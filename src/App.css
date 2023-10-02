@@ -1,75 +1,3 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  min-height: 200px;
-}
-
-.header {
-  /* font-size: 2rem; */
-  font-weight: bold;
-  color: #444;
-  margin-bottom: 20px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th,
-td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-.calendar td {
-  height: 95px;
-  width: 14.28%;
-}
-
-.budget td {
-  height: 50px;
-  width: 25%;
-}
-
-.current-day {
-  background-color: #fdd;
-}
-
-/* .budget {
-  margin-top: 20px;
-  padding: 10px;
-  width: 80%;
-  font-size: 1rem;
-} */
-
-/* .budget-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-} */
-
-/* .budget-button:hover {
-  background-color: #45a049;
-} */
-
-/* .budget-total {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  color: #333;
-} */
 
 .nav {
   display: flex;
@@ -81,3 +9,5 @@ th {
   padding: 10px;
   margin-bottom: 20px;
 }
+
+

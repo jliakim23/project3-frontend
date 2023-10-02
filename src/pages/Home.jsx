@@ -1,10 +1,12 @@
 import React from 'react'
-import Calendar from '../components/Calendar'
+import MyCalendar from '../components/MyCalendar'
 
-const Home = () => {
+
+
+const Home = ({data}) => {
   return (
     <div>
-      <Calendar />
+      <MyCalendar data={data}/>
     </div>
   );
 };

@@ -9,6 +9,8 @@ import TripIndex from "./pages/TripIndex";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import Signup from "./pages/AuthPage/Signup";
 import Login from "./pages/AuthPage/Login";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
           </Route>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home data={data}/>} />
           <Route path="/trips" element={<TripIndex data={data} />} />
           <Route path="/trips/:title" element={<MyTrip data={data} />} />
         </Routes>

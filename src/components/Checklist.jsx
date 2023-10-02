@@ -19,22 +19,53 @@ const Checklist = ({ listName, list }) => {
     setChecklist(updatedChecklist);
   };
 
+  const handleSetValue = (e, idx) => {
+    const { value } = e.target;
+    const updatedChecklist = checklist.map((item, i) => {
+      if (i === idx) {
+        return {
+          ...item,
+          item: value,
+        };
+      }
+      return item;
+    });
+
+    setChecklist(updatedChecklist);
+  };
+
+  const deleteItem = (value) => {
+    // console.log(value);
+    const updatedChecklist = checklist.filter((item) => {
+      console.log(value, item.item);
+      return value !== item.item;
+    });
+    setChecklist(updatedChecklist);
+  };
+
   return (
     <div className="container">
       <h2 className="header">{listName}</h2>
       <ul style={{ listStyle: "none" }}>
         {checklist.map((item, idx) => (
-          <div key={idx} style={{ display: "flex" }}>
+          <li key={idx} style={{ display: "flex" }}>
             <input
               type="checkbox"
               checked={item.checked}
               name={item.item}
               onChange={handleCheckClick}
             />
-            <ListItem htmlFor={item.item} item={item.item} idx={idx}>
+            <ListItem
+              htmlFor={item.item}
+              item={item.item}
+              idx={idx}
+              onSetValue={handleSetValue}
+              deleteItem={deleteItem}
+              checklist={checklist}
+            >
               {item.item}
             </ListItem>
-          </div>
+          </li>
         ))}
       </ul>
     </div>
