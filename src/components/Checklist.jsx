@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import ListItem from "./ListItem";
+import { FaSuitcase } from "react-icons/fa";
+import { PiCheckFatBold } from "react-icons/pi";
 
-const Checklist = ({ listName, list }) => {
+const Checklist = ({ type, list }) => {
   const [checklist, setChecklist] = useState(list);
+
+  const listName = type === "to pack" ? "Things To Pack" : "Checklist";
+  const listIcon =
+    type === "to pack" ? (
+      <FaSuitcase style={{ marginRight: 10 }} />
+    ) : (
+      <PiCheckFatBold style={{ marginRight: 10 }} />
+    );
 
   const handleCheckClick = (e) => {
     const { name } = e.target;
@@ -45,7 +55,10 @@ const Checklist = ({ listName, list }) => {
 
   return (
     <div className="container">
-      <h2 className="header">{listName}</h2>
+      <h2 className="header">
+        {listIcon}
+        {listName}
+      </h2>
       <ul style={{ listStyle: "none" }}>
         {checklist.map((item, idx) => (
           <li key={idx} style={{ display: "flex" }}>
