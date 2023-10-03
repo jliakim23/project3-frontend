@@ -11,13 +11,13 @@ const AuthPage = () => {
   };
 
   return (     
-    <div className="auth-container">
-       <div className="auth-buttons">
-      <Login />
+    <div className>
+      <div className>
+        <Login />
         {!isSignupVisible && (
           <button onClick={toggleSignupForm}>Register</button>
         )}
-   </div>
+      </div>
 
       {isSignupVisible && (
         <div className="modal-overlay">
@@ -26,7 +26,6 @@ const AuthPage = () => {
               &times;
             </span>
             <Signup />  
-            
           </div> 
         </div>
       )}
@@ -35,4 +34,3 @@ const AuthPage = () => {
 }
 
 export default AuthPage;
-
