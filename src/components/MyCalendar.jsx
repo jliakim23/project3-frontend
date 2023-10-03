@@ -1,9 +1,9 @@
 import React from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css"; // Import the CSS
 import { useState } from "react";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
@@ -17,19 +17,6 @@ const MyCalendar = ({ data }) => {
   }));
 
   const [events, setEvents] = useState(formattedData);
-
-  //     return (
-  //         <div>
-  //             <Calendar
-  //                 localizer={localizer}
-  //                 events={event}
-  //                 startAccessor="start"
-  //                 endAccessor="end"
-  //                 style={{ height: 500 }}
-  //             />
-  //         </div>
-  //     );
-  // };
 
   const handleSelect = ({ start, end }) => {
     const title = window.prompt("New Event name");
@@ -59,6 +46,8 @@ const MyCalendar = ({ data }) => {
   return (
     <div className="My">
       <DnDCalendar
+        // startAccessor="start"
+        // endAccessor="end"
         selectable
         defaultDate={moment().toDate()}
         defaultView="month"
