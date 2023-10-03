@@ -11,10 +11,22 @@ const TripIndex = ({ data }) => {
 
   const handleAddTrip = (e) => {
     e.preventDefault();
-    const { value } = e.target;
-    console.log(value);
+    fetch("https://tripadvisor-backend.onrender.com/plans", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
-
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setForm({
