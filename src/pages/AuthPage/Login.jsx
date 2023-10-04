@@ -29,9 +29,9 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data.message);
 
-        if (data.message === "Login successful") {
+        if (data.name) {
+          localStorage.setItem('currentUser', JSON.stringify(data))
           navigate("/home");
         }
       } else {
