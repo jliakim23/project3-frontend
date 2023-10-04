@@ -33,7 +33,7 @@ const TripIndex = ({ data }) => {
       ...form,
       [name]: value,
     });
-
+    console.log(form);
   };
 
   return (
@@ -42,7 +42,7 @@ const TripIndex = ({ data }) => {
         {data.map((trip) => {
           const titleUrl = trip.title.replace(/\s+/g, "_");
           return (
-            <li key={trip.id}>
+            <li key={trip._id}>
               <Link to={`/trips/${titleUrl}`}>{trip.title}</Link>
             </li>
           );
@@ -51,7 +51,7 @@ const TripIndex = ({ data }) => {
       <form onSubmit={handleAddTrip}>
         <input
           type="text"
-          name="Title"
+          name="title"
           placeholder="Title (must be unique)"
           onChange={handleFormChange}
         />
@@ -59,7 +59,7 @@ const TripIndex = ({ data }) => {
         <input type="date" name="endDate" onChange={handleFormChange} />
         <input
           type="text"
-          name="Description"
+          name="description"
           placeholder="Brief description"
           onChange={handleFormChange}
         />

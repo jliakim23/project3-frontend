@@ -88,7 +88,7 @@ const MyTrip = ({ data }) => {
       <p>
         <CgDetailsMore style={{ marginRight: 5 }} /> {trip.description}
       </p>
-      <Checklist list={trip.checklist.items} type="to pack" />
+      {/* <Checklist list={trip.checklist.items} type="to pack" /> */}
       <Budget details={trip.budget[0]} />
     </div>
   );
