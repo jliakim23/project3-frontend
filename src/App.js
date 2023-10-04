@@ -25,16 +25,32 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
           </Route>
-<<<<<<< Updated upstream
-          
-          <Route path="/home" element={<Auth> <Home data={data}/></Auth> } />
-          <Route path="/trips" element={<Auth><TripIndex data={data} /></Auth>} />
-          <Route path="/trips/:title" element={<Auth><MyTrip data={data} /></Auth>} />
-=======
-          <Route path="/home" element={<Home data={data} />} />
-          <Route path="/trips" element={<TripIndex data={data} />} />
-          <Route path="/trips/:title" element={<MyTrip data={data} />} />
->>>>>>> Stashed changes
+
+          <Route
+            path="/home"
+            element={
+              <Auth>
+                {" "}
+                <Home data={data} />
+              </Auth>
+            }
+          />
+          <Route
+            path="/trips"
+            element={
+              <Auth>
+                <TripIndex data={data} />
+              </Auth>
+            }
+          />
+          <Route
+            path="/trips/:title"
+            element={
+              <Auth>
+                <MyTrip data={data} />
+              </Auth>
+            }
+          />
         </Routes>
       </main>
     </div>
