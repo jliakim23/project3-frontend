@@ -1,7 +1,6 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import data from "./data";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import MyTrip from "./pages/MyTrip";
@@ -14,6 +13,14 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import Auth from "./pages/AuthPage/Auth";
 
 function App() {
+  const [trips, setTrips] = useState([]);
+
+  useEffect(() => {
+    fetch("https://tripadvisor-backend.onrender.com/plan")
+      .then((res) => res.json())
+      .then((data) => setTrips(data));
+  }, []);
+
   return (
     <div>
       <header>
@@ -31,7 +38,7 @@ function App() {
             element={
               <Auth>
                 {" "}
-                <Home data={data} />
+                <Home data={trips} />
               </Auth>
             }
           />
@@ -39,7 +46,7 @@ function App() {
             path="/trips"
             element={
               <Auth>
-                <TripIndex data={data} />
+                <TripIndex data={trips} />
               </Auth>
             }
           />
@@ -47,7 +54,7 @@ function App() {
             path="/trips/:title"
             element={
               <Auth>
-                <MyTrip data={data} />
+                <MyTrip data={trips} />
               </Auth>
             }
           />
