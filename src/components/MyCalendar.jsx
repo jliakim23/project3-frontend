@@ -11,7 +11,7 @@ const DnDCalendar = withDragAndDrop(Calendar);
 const MyCalendar = ({ data }) => {
   const formattedData = data.map((event) => ({
     id: event.id,
-    title: event.Title,
+    title: event.title,
     start: new Date(event.startDate),
     end: new Date(event.endDate),
   }));

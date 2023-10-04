@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const TripIndex = ({ data }) => {
   const [form, setForm] = useState({
-    Title: "",
+    title: "",
     startDate: "",
     endDate: "",
-    Description: "",
+    description: "",
   });
 
   const handleAddTrip = (e) => {
@@ -40,10 +40,10 @@ const TripIndex = ({ data }) => {
     <div>
       <ul>
         {data.map((trip) => {
-          const titleUrl = trip.Title.replace(/\s+/g, "_");
+          const titleUrl = trip.title.replace(/\s+/g, "_");
           return (
             <li key={trip.id}>
-              <Link to={`/trips/${titleUrl}`}>{trip.Title}</Link>
+              <Link to={`/trips/${titleUrl}`}>{trip.title}</Link>
             </li>
           );
         })}
