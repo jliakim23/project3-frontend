@@ -11,7 +11,7 @@ const TripIndex = ({ data }) => {
 
   const handleAddTrip = (e) => {
     e.preventDefault();
-    fetch("https://tripadvisor-backend.onrender.com/plans", {
+    fetch("https://tripadvisor-backend.onrender.com/plan", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +21,7 @@ const TripIndex = ({ data }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -33,7 +33,7 @@ const TripIndex = ({ data }) => {
       ...form,
       [name]: value,
     });
-    console.log(form);
+
   };
 
   return (
