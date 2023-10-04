@@ -15,7 +15,7 @@ const Budget = ({ details }) => {
         ...budget,
         foodAmount: value,
         totalAmount:
-          value + budget.attractionAmount + budget.accomadationAmount,
+          value + budget.attractionAmount + budget.accommodationAmount,
       });
     }
 
@@ -23,14 +23,14 @@ const Budget = ({ details }) => {
       setBudget({
         ...budget,
         attractionAmount: value,
-        totalAmount: value + budget.foodAmount + budget.accomadationAmount,
+        totalAmount: value + budget.foodAmount + budget.accommodationAmount,
       });
     }
 
-    if (name === "accomadationAmount") {
+    if (name === "accommodationAmount") {
       setBudget({
         ...budget,
-        accomadationAmount: value,
+        accommodationAmount: value,
         totalAmount: value + budget.foodAmount + budget.attractionAmount,
       });
     }
@@ -72,8 +72,8 @@ const Budget = ({ details }) => {
             <td>
               <ModalInput
                 type="money"
-                name="accomadationAmount"
-                value={parseFloat(budget.accomadationAmount).toFixed(2)}
+                name="accommodationAmount"
+                value={parseFloat(budget.accommodationAmount).toFixed(2)}
                 setValue={handleSetValue}
               />
             </td>

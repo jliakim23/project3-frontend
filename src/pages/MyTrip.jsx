@@ -9,7 +9,7 @@ const MyTrip = ({ data }) => {
   const params = useParams();
 
   const trip = data.find(
-    (trip) => trip.Title === params.title.replace(/_/g, " ")
+    (trip) => trip.title === params.title.replace(/_/g, " ")
   );
 
   trip.startDate = new Date(trip.startDate);
@@ -80,13 +80,13 @@ const MyTrip = ({ data }) => {
 
   return (
     <div>
-      <h1 className="header">{trip.Title}</h1>
+      <h1 className="header">{trip.title}</h1>
       <p>
         <BsCalendarEvent style={{ marginRight: 7 }} />
         {formatDateRange(trip.startDate, trip.endDate)}
       </p>
       <p>
-        <CgDetailsMore style={{ marginRight: 5 }} /> {trip.Description}
+        <CgDetailsMore style={{ marginRight: 5 }} /> {trip.description}
       </p>
       <Checklist list={trip.checklist.items} type="to pack" />
       <Budget details={trip.budget[0]} />
