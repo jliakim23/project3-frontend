@@ -1,13 +1,23 @@
 
-.nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  background-color: #f2f2f2;
-  padding: 10px;
-  margin-bottom: 20px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
+.My {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/src/images/pic1.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+}
 
+.navbar {
+  background-color: rgba(78, 174, 212, 0.4);
+}

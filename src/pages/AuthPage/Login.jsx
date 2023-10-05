@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { CiMail } from "react-icons/ci";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button, Modal, Form, Alert, Row, Col } from 'react-bootstrap';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const Login = () => {
     password: "",
   });
 
+  const [showModal, setShowModal] = useState(false);
   const [loginStatus, setLoginStatus] = useState(null);
   const navigate = useNavigate(); 
 
@@ -19,7 +21,7 @@ const Login = () => {
     const { email, password } = formData;
 
     try {
-      const response = await fetch('https://tripadvisor-backend.onrender.com/login', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,52 +38,79 @@ const Login = () => {
         }
       } else {
         const errorData = await response.json();
-        console.error(`Login failed: ${errorData.message}`);
-        setLoginStatus("Login failed");
+        setLoginStatus(errorData.message);
+        setShowModal(true);
       }
     } catch (error) {
-      console.error("Error: " + error.message);
       setLoginStatus("Login failed");
+      setShowModal(true);
     }
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
-    <div className="container">
-      <div className="header">
-        <div className="text">Login</div>
-        <div className="underline"></div>
-      </div>
+<div className="container">
+  <div className="header d-flex justify-content-end">
+    <div className="underline"></div>
+    <h3 style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>Join Today.</h3>
+  </div>
+
       <div className="inputs">
-        <div className="input">
-          <CiMail style={{ margin: "0px 30px" }} />{" "}
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-          />
-        </div>
-        <div className="input" style={{ display: "flex", alignItems: "center" }}>
-          <RiLockPasswordLine style={{ margin: "0px 30px" }} />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-          />
-        </div>
-        <div className="submit-container">
-          <button className="submit" onClick={handleFormSubmit}>
-            Login
-          </button>
-        </div>
-        {loginStatus && <div className="login-status">{loginStatus}</div>}
+      <Form>
+  <Row className="justify-content-end">
+    <Col xs="auto">
+      <Form.Group className="input" style={{ display: "flex", alignItems: "center" }}>
+        <CiMail style={{ margin: "0px 20px", backgroundColor: "rgba(255, 255, 255, 0.5)", fontSize: "24px",borderRadius: "30%" }} />
+        <Form.Control
+          type="text"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={(e) =>
+            setFormData({ ...formData, email: e.target.value })
+          }
+          className="short-input" 
+        />
+      </Form.Group>
+    </Col>
+  </Row>
+  <Row className="justify-content-end">
+    <Col xs="auto">
+      <Form.Group className="input" style={{ display: "flex", alignItems: "center" }}>
+        <RiLockPasswordLine style={{ margin: "0px 20px", backgroundColor: "rgba(255, 255, 255, 0.5)", fontSize: "24px", borderRadius: "30%"  }} />
+        <Form.Control
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleInputChange}
+          className="short-input" 
+        />
+      </Form.Group>
+    </Col>
+  </Row>
+  <Row className="justify-content-end">
+    <Col xs="auto">
+      <Button type="submit" onClick={handleFormSubmit}className="custom-button">
+        Login
+      </Button>
+    </Col>
+  </Row>
+</Form>
+
+        {loginStatus && (
+          <Alert variant="danger">
+            {loginStatus}
+          </Alert>
+        )}
       </div>
     </div>
   );

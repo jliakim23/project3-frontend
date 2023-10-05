@@ -11,7 +11,7 @@ const TripIndex = ({ data }) => {
 
   const handleAddTrip = (e) => {
     e.preventDefault();
-    fetch("https://tripadvisor-backend.onrender.com/plan", {
+    fetch(`${process.env.REACT_APP_API_URL}/plan`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
