@@ -17,7 +17,7 @@ const NavComponent = () => {
     <Navbar className="navbar" expand="lg">
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="mr-auto">
+      <Nav className="ml-auto">
         <Nav.Link onClick={() => navigate('/Home')}><LuPalmtree /> Home</Nav.Link>
         <Nav.Link onClick={() => navigate('/trips')}><LuPalmtree /> My Trips</Nav.Link>
         <Nav.Link onClick={handleLogout}><TbLogout2 /> Logout</Nav.Link>
