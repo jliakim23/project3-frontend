@@ -1,17 +1,28 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Checklist from "../components/Checklist";
+// import Checklist from "../components/Checklist";
 import Budget from "../components/Budget";
 import { BsCalendarEvent } from "react-icons/bs";
 import { CgDetailsMore } from "react-icons/cg";
-import { Container, Row, Col } from "react-bootstrap"; 
+import { Container, Row, Col, Modal, Form, Button } from "react-bootstrap"; 
+
+import { useState } from "react";
 
 const MyTrip = ({ data }) => {
   const params = useParams();
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedData, setEditedData] = useState({ ...data });
 
   const trip = data.find(
     (trip) => trip.title === params.title.replace(/_/g, " ")
   );
+  if (!trip) {
+    return <div>.</div>;
+  }
+
+  const handleSave = () => {
+    setIsEditing(false);
+  };
 
   trip.startDate = new Date(trip.startDate);
   trip.endDate = new Date(trip.endDate);
@@ -80,8 +91,9 @@ const MyTrip = ({ data }) => {
   };
 
   return (
-    <div className="tripIdPage">
+    <div className="tripIdPage"> 
     <Container>
+    <div className="grey-background">
       <Row>
         <Col>
           <h1 className="header"style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>{trip.title}</h1>
@@ -90,11 +102,15 @@ const MyTrip = ({ data }) => {
             {formatDateRange(trip.startDate, trip.endDate)}
           </p>
           <p style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>
-            <CgDetailsMore style={{ marginRight: 5 }} /> {trip.description}
+            <CgDetailsMore style={{ marginRight: 5 }} /> {trip.description} 
           </p>
         </Col>
       </Row>
-      {/* Checklist and Budget components can be added here */}
+      <p style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>
+      <Budget details={trip.budget} />
+      {/* <Checklist list={trip.checklist.items} type="to pack" /> */}
+      </p>
+      </div>
     </Container>
     ,</div>
   );

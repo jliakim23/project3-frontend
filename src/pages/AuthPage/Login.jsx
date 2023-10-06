@@ -78,6 +78,7 @@ const Login = () => {
             setFormData({ ...formData, email: e.target.value })
           }
           className="short-input" 
+          style={{backgroundColor: "rgba(255, 255, 255, 0.7)"}}
         />
       </Form.Group>
     </Col>
@@ -93,11 +94,12 @@ const Login = () => {
           value={formData.password}
           onChange={handleInputChange}
           className="short-input" 
+          style={{backgroundColor: "rgba(255, 255, 255, 0.7)"}}
         />
       </Form.Group>
     </Col>
   </Row>
-  <Row className="justify-content-end">
+  <Row className="justify-content-center mt-2">
     <Col xs="auto">
       <Button type="submit" onClick={handleFormSubmit}className="custom-button">
         Login
