@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Nav from "./components/Nav";
+import Nav from "./components/NavComponent";
 import Home from "./pages/Home";
 import MyTrip from "./pages/MyTrip";
 import TripIndex from "./pages/TripIndex";
@@ -11,20 +11,23 @@ import Login from "./pages/AuthPage/Login";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import Auth from "./pages/AuthPage/Auth";
+import NavComponent from "./components/NavComponent";
+
 
 function App() {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
-    fetch("https://tripadvisor-backend.onrender.com/plan")
+    fetch(`${process.env.REACT_APP_API_URL}/plan`)
       .then((res) => res.json())
       .then((data) => setTrips(data));
   }, []);
 
   return (
     <div>
+    
       <header>
-        <Nav />
+        <NavComponent />
       </header>
       <main>
         <Routes>
@@ -32,7 +35,6 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
           </Route>
-
           <Route
             path="/home"
             element={

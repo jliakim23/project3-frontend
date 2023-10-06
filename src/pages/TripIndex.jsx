@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
 
 const TripIndex = ({ data }) => {
   const [form, setForm] = useState({
@@ -11,7 +12,7 @@ const TripIndex = ({ data }) => {
 
   const handleAddTrip = (e) => {
     e.preventDefault();
-    fetch("https://tripadvisor-backend.onrender.com/plan", {
+    fetch(`${process.env.REACT_APP_API_URL}/plan`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,36 +38,62 @@ const TripIndex = ({ data }) => {
   };
 
   return (
-    <div>
-      <ul>
-        {data.map((trip) => {
-          const titleUrl = trip.title.replace(/\s+/g, "_");
-          return (
-            <li key={trip._id}>
-              <Link to={`/trips/${titleUrl}`}>{trip.title}</Link>
-            </li>
-          );
-        })}
-      </ul>
-      <form onSubmit={handleAddTrip}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Title (must be unique)"
-          onChange={handleFormChange}
-        />
-        <input type="date" name="startDate" onChange={handleFormChange} />
-        <input type="date" name="endDate" onChange={handleFormChange} />
-        <input
-          type="text"
-          name="description"
-          placeholder="Brief description"
-          onChange={handleFormChange}
-        />
-        <input type="submit" value="Add Trip" />
-      </form>
-    </div>
-  );
+    <div className="addTripsPage">
+    <Container>
+    <Row>
+      <Col md={6}>
+        <h1 style= {{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>Trips</h1>
+        <ListGroup>
+          {data.map((trip) => {
+            const titleUrl = trip.title.replace(/\s+/g, "_");
+            return (
+              <ListGroup.Item key={trip._id}>
+                <Link to={`/trips/${titleUrl}`}>{trip.title}</Link>
+              </ListGroup.Item>
+            );
+          })}
+        </ListGroup>
+      </Col>
+      <Col md={6}>
+        <h2 style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>Add a Trip</h2>
+        <Form onSubmit={handleAddTrip}>
+          <Form.Group>
+            <Form.Control
+              type="text"
+              name="title"
+              placeholder="Title (must be unique)"
+              onChange={handleFormChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+              type="date"
+              name="startDate"
+              onChange={handleFormChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+              type="date"
+              name="endDate"
+              onChange={handleFormChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+              type="text"
+              name="description"
+              placeholder="Brief description"
+              onChange={handleFormChange}
+            />
+          </Form.Group>
+          <Button className='custom-button mt-3' type="submit">Add Trip</Button>
+        </Form>
+      </Col>
+    </Row>
+  </Container>
+  </div>
+);
 };
 
 export default TripIndex;

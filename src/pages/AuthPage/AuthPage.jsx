@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Login from './Login';
+import { Button, Modal, Row, Col, Container } from 'react-bootstrap'; 
 import Signup from './Signup';
+import Login from './Login';
 import './AuthPage.css';
 
 const AuthPage = () => {
@@ -10,27 +11,41 @@ const AuthPage = () => {
     setSignupVisible(!isSignupVisible);
   };
 
-  return (     
-    <div className>
-      <div className>
-        <Login />
-        {!isSignupVisible && (
-          <button onClick={toggleSignupForm}>Register</button>
-        )}
-      </div>
+  return (
+    <div className="firstpage">
+      <Container>
+        <h1 style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>Welcome to Trip Planner</h1>
+        <h3 style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>Your Next Adventure Awaits</h3>
 
-      {isSignupVisible && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <span className="close-button" onClick={toggleSignupForm}>
-              &times;
-            </span>
-            <Signup />  
-          </div> 
-        </div>
-      )}
+        <Row className="justify-content-center">
+          <Col xs={12} md={6}>
+            <Login />
+          </Col>
+        </Row>
+
+        <Row className="justify-content-end mt-2">
+          <Col xs={12} md={6} className="text-md-center">
+            {!isSignupVisible && (
+              <Button className='custom-button' onClick={toggleSignupForm}>
+                Sign Up
+              </Button>
+            )}
+          </Col>
+        </Row>
+
+        <Modal show={isSignupVisible} onHide={toggleSignupForm} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Sign Up</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Signup />
+          </Modal.Body>
+        </Modal>
+      </Container>
     </div>
   );
-}
+};
 
 export default AuthPage;
+
+

@@ -4,6 +4,7 @@ import Checklist from "../components/Checklist";
 import Budget from "../components/Budget";
 import { BsCalendarEvent } from "react-icons/bs";
 import { CgDetailsMore } from "react-icons/cg";
+import { Container, Row, Col } from "react-bootstrap"; 
 
 const MyTrip = ({ data }) => {
   const params = useParams();
@@ -79,18 +80,23 @@ const MyTrip = ({ data }) => {
   };
 
   return (
-    <div>
-      <h1 className="header">{trip.title}</h1>
-      <p>
-        <BsCalendarEvent style={{ marginRight: 7 }} />
-        {formatDateRange(trip.startDate, trip.endDate)}
-      </p>
-      <p>
-        <CgDetailsMore style={{ marginRight: 5 }} /> {trip.description}
-      </p>
-      {/* <Checklist list={trip.checklist.items} type="to pack" /> */}
-      <Budget details={trip.budget[0]} />
-    </div>
+    <div className="tripIdPage">
+    <Container>
+      <Row>
+        <Col>
+          <h1 className="header"style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>{trip.title}</h1>
+          <p style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>
+            <BsCalendarEvent style={{ marginRight: 7 }} />
+            {formatDateRange(trip.startDate, trip.endDate)}
+          </p>
+          <p style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>
+            <CgDetailsMore style={{ marginRight: 5 }} /> {trip.description}
+          </p>
+        </Col>
+      </Row>
+      {/* Checklist and Budget components can be added here */}
+    </Container>
+    ,</div>
   );
 };
 
