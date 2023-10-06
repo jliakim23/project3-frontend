@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, ListGroup, Modal} from "react-bootstrap";
+
 
 const TripIndex = ({ data }) => {
   const [form, setForm] = useState({
@@ -9,6 +10,11 @@ const TripIndex = ({ data }) => {
     endDate: "",
     description: "",
   });
+
+  const [trips, setTrips] = useState(data); 
+  useEffect(() => {
+    setTrips(data);
+  }, [data]);
 
   const handleAddTrip = (e) => {
     e.preventDefault();
@@ -28,6 +34,22 @@ const TripIndex = ({ data }) => {
         console.error("Error:", error);
       });
   };
+
+  const handleDeleteTrip = (tripId) => {
+    fetch(`${process.env.REACT_APP_API_URL}/plan/${tripId}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then(() => {
+        console.log("Trip deleted");
+
+        setTrips(trips.filter((trip) => trip._id !== tripId));
+      })
+      .catch((error) => {
+        console.error("Error deleting trip:", error);
+      });
+  };
+
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -48,8 +70,20 @@ const TripIndex = ({ data }) => {
             const titleUrl = trip.title.replace(/\s+/g, "_");
             return (
               <ListGroup.Item key={trip._id}>
-                <Link to={`/trips/${titleUrl}`}>{trip.title}</Link>
-              </ListGroup.Item>
+              <Row>
+                <Col>
+                  <Link to={`/trips/${titleUrl}`}>{trip.title}</Link>
+                </Col>
+                <Col xs="auto">
+                  <Button
+                    className='custom-button ml-2'  
+                    onClick={() => handleDeleteTrip(trip._id)}
+                  >
+                    X
+                  </Button>
+                </Col>
+              </Row>
+            </ListGroup.Item>
             );
           })}
         </ListGroup>
@@ -58,6 +92,7 @@ const TripIndex = ({ data }) => {
         <h2 style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>Add a Trip</h2>
         <Form onSubmit={handleAddTrip}>
           <Form.Group>
+           
             <Form.Control
               type="text"
               name="title"

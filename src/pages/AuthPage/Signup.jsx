@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-import { RiLockPasswordLine } from 'react-icons/ri';
-import { CiMail } from 'react-icons/ci';
-import { BiUser } from 'react-icons/bi';
-
+import React, { useState } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { CiMail } from "react-icons/ci";
+import { BiUser } from "react-icons/bi";
+import { Row, Col } from "react-bootstrap";
 const Signup = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   const [signupStatus, setSignupStatus] = useState(null);
@@ -17,17 +17,17 @@ const Signup = () => {
     e.preventDefault();
 
     const response = await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     });
 
     if (response.ok) {
-      setSignupStatus('Now Login!');
+      setSignupStatus("Now Login!");
     } else {
-      setSignupStatus('Signup failed');
+      setSignupStatus("Signup failed");
     }
   };
 
@@ -44,52 +44,61 @@ const Signup = () => {
       <Form onSubmit={handleFormSubmit}>
         <div className="inputs">
           <div className="input">
-          <Form.Group className="input" style={{ display: "flex", alignItems: "center" }}>
-            <BiUser style={{ margin: '0px 30px' }} />{' '}
-            <Form.Control
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleInputChange}
-              
-            />
+            <Form.Group
+              className="input"
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <BiUser style={{ margin: "0px 30px" }} />{" "}
+              <Form.Control
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleInputChange}
+                style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+              />
             </Form.Group>
           </div>
           <div className="input">
-          <Form.Group className="input" style={{ display: "flex", alignItems: "center" }}>
-            <CiMail style={{ margin: '0px 30px' }} />{' '}
-            <Form.Control
-              type="text"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
+            <Form.Group
+              className="input"
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <CiMail style={{ margin: "0px 30px" }} />{" "}
+              <Form.Control
+                type="text"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+              />
             </Form.Group>
           </div>
           <div className="input">
-          <Form.Group className="input" style={{ display: "flex", alignItems: "center" }}>
-            <RiLockPasswordLine style={{ margin: '0px 30px' }} />
-            <Form.Control
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleInputChange}
-            />
+            <Form.Group
+              className="input"
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <RiLockPasswordLine style={{ margin: "0px 30px" }} />
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleInputChange}
+                style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+              />
             </Form.Group>
           </div>
-          <div className="submit-container">
-            <Button className='custom-button' type="submit">
-              Sign Up
-            </Button>
-          </div>
-          {signupStatus && (
-            <Alert variant="success">
-              {signupStatus}
-            </Alert>
-          )}
+          <Row className="justify-content-end">
+            <Col xs="auto">
+              <Button className="custom-button" type="submit">
+                Sign Up
+              </Button>
+            </Col>
+          </Row>
+          {signupStatus && <Alert variant="success">{signupStatus}</Alert>}
         </div>
       </Form>
     </div>

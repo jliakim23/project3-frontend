@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ModalInput from "./ModalInput";
 import { TbPigMoney } from "react-icons/tb";
+import { Table } from "react-bootstrap";
 
 const Budget = ({ details }) => {
   const [budget, setBudget] = useState(details);
@@ -37,18 +38,18 @@ const Budget = ({ details }) => {
   };
 
   return (
-    <div className="budget container">
-      <h2 className="header">
+<div className="budget container">
+      <h2 >
         <TbPigMoney style={{ marginRight: 10 }} />
         Budget Planner
       </h2>
-      <table>
+      <Table striped bordered >
         <thead>
           <tr>
-            <th>Food</th>
-            <th>Attractions</th>
-            <th>Accomodation</th>
-            <th>Total</th>
+            <th style={{ color: '#7ba3ca' }} >Food</th>
+            <th style={{ color: '#7ba3ca' }}>Attractions</th>
+            <th style={{ color: '#7ba3ca' }}>Accommodation</th>
+            <th style={{ color: '#7ba3ca' }}>Total</th>
           </tr>
         </thead>
         <tbody>
@@ -80,9 +81,8 @@ const Budget = ({ details }) => {
             <td>${budget.totalAmount.toFixed(2)}</td>
           </tr>
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };
-
 export default Budget;

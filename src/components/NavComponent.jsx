@@ -14,7 +14,7 @@ const NavComponent = () => {
   }
 
   return (
-    <Navbar className="navbar" expand="lg">
+    <Navbar className="navbar" expand="lg" >
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
