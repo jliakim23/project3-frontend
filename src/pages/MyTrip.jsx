@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-// import Checklist from "../components/Checklist";
+import Checklist from "../components/Checklist";
 import Budget from "../components/Budget";
 import { BsCalendarEvent } from "react-icons/bs";
 import { CgDetailsMore } from "react-icons/cg";
@@ -27,7 +27,7 @@ const MyTrip = ({ data }) => {
   };
 
   const handleSaveClick = () => {
-    // Create a payload object with the edited trip details
+ 
     const editedTripData = {
       title: editedTrip.title,
       startDate: editedTrip.startDate,
@@ -35,9 +35,8 @@ const MyTrip = ({ data }) => {
       description: editedTrip.description,
     };
 
-    // Make an API request to update the trip
     fetch(`${process.env.REACT_APP_API_URL}/plan/${tripIdToEdit}`, {
-      method: "PUT", // Use the appropriate HTTP method for updating data
+      method: "PUT", 
       headers: {
         "Content-Type": "application/json",
       },
@@ -47,8 +46,7 @@ const MyTrip = ({ data }) => {
       .then((data) => {
         console.log("Trip updated:", data);
 
-        // Update the local state with the edited trip details
-        setIsEditing(false); // Exit the edit mode
+        setIsEditing(false); 
         data((prevTrips) =>
           prevTrips.map((trip) =>
             trip._id === tripIdToEdit ? { ...trip, ...editedTripData } : trip
@@ -200,6 +198,7 @@ const MyTrip = ({ data }) => {
                         }
                       />
                     </Form.Group>
+                    
                     <Button style={{backgroundColor: 'rgba(78, 174, 212, 0.7)'}} size="sm" onClick={handleSaveClick}>
                       Save
                     </Button>
@@ -229,14 +228,16 @@ const MyTrip = ({ data }) => {
               <Button style={{backgroundColor: 'rgba(78, 174, 212, 0.4)'}}   size="sm"  onClick={() => handleEditClick(trip._id)}>Edit</Button>
             </Col>
           </Row>
+
           <p
             style={{
               color: "white",
               textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
             }}
-          >
+          > 
+          <Checklist list={trip.checklist} type="to pack" />
             <Budget details={trip.budget} />
-            {/* <Checklist list={trip.checklist.items} type="to pack" /> */}
+           
           </p>
         </div>
       </Container>

@@ -38,12 +38,12 @@ const AuthPage = () => {
           </Col>
         </Row> */}
 
-        <Row className="justify-content-end mt-2">
+        <Row className="justify-content-end mt-1">
           <Col xs={12} md={6} className="text-md-center">
             {!isSignupVisible && (
               <div className="text-center">
                    <Login />
-                <Button className="custom-button mt-2" onClick={toggleSignupForm}>
+                <Button className="custom-button mt-1" onClick={toggleSignupForm}>
                   Sign Up
                 </Button>
               </div>
