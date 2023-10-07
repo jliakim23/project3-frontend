@@ -4,7 +4,7 @@ import { FaSuitcase } from "react-icons/fa";
 import { PiCheckFatBold } from "react-icons/pi";
 
 const Checklist = ({ type, list }) => {
-  const [checklist, setChecklist] = useState(list);
+  const [checklist, setChecklist] = useState(list || []);
 
   const listName = type === "to pack" ? "Things To Pack" : "Checklist";
   const listIcon =
