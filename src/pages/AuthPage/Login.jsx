@@ -83,7 +83,7 @@ const Login = () => {
       </Form.Group>
     </Col>
   </Row>
-  <Row className="justify-content-end">
+  <Row className="justify-content-end mt-2">
     <Col xs="auto">
       <Form.Group className="input" style={{ display: "flex", alignItems: "center" }}>
         <RiLockPasswordLine style={{ margin: "0px 20px", backgroundColor: "rgba(255, 255, 255, 0.5)", fontSize: "24px", borderRadius: "30%"  }} />

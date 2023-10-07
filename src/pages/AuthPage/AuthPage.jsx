@@ -3,6 +3,7 @@ import { Button, Modal, Row, Col, Container } from "react-bootstrap";
 import Signup from "./Signup";
 import Login from "./Login";
 import "./AuthPage.css";
+import { TbSnowflake } from "react-icons/tb";
 
 const AuthPage = () => {
   const [isSignupVisible, setSignupVisible] = useState(false);
@@ -64,3 +65,4 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
+
