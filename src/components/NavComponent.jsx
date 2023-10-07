@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { Navbar, Nav} from "react-bootstrap";
 import { TbLogout2 } from "react-icons/tb";
 import { LuPalmtree } from "react-icons/lu";
 import { AiOutlineHome } from "react-icons/ai";

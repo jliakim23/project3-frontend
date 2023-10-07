@@ -3,7 +3,7 @@ import { CiMail } from "react-icons/ci";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button, Modal, Form, Alert, Row, Col } from 'react-bootstrap';
+import { Button, Form, Alert, Row, Col } from 'react-bootstrap';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +11,7 @@ const Login = () => {
     password: "",
   });
 
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const [loginStatus, setLoginStatus] = useState(null);
   const navigate = useNavigate(); 
 
@@ -39,11 +39,11 @@ const Login = () => {
       } else {
         const errorData = await response.json();
         setLoginStatus(errorData.message);
-        setShowModal(true);
+        // setShowModal(true);
       }
     } catch (error) {
       setLoginStatus("Login failed");
-      setShowModal(true);
+      // setShowModal(true);
     }
   };
 
@@ -52,9 +52,9 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  // const closeModal = () => {
+  //   setShowModal(false);
+  // };
 
   return (
 <div className="container">
