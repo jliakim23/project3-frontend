@@ -136,9 +136,9 @@ const MyTrip = ({ data }) => {
   return (
     <div className="tripIdPage">
       <Container>
-        <div className="grey-background">
-          <Row>
-            <Col>
+        <div className="grey-background" >
+          <Row className="mt-2">
+            <Col >
               <h1
                 className="header"
                 style={{
@@ -200,7 +200,7 @@ const MyTrip = ({ data }) => {
                         }
                       />
                     </Form.Group>
-                    <Button variant="primary" onClick={handleSaveClick}>
+                    <Button style={{backgroundColor: 'rgba(78, 174, 212, 0.7)'}} size="sm" onClick={handleSaveClick}>
                       Save
                     </Button>
                   </Form>
@@ -226,7 +226,7 @@ const MyTrip = ({ data }) => {
                 <CgDetailsMore style={{ marginRight: 5 }} /> {trip.description}
               </p>
 
-              <Button variant="primary" onClick={() => handleEditClick(trip._id)}>Edit</Button>
+              <Button style={{backgroundColor: 'rgba(78, 174, 212, 0.4)'}}   size="sm"  onClick={() => handleEditClick(trip._id)}>Edit</Button>
             </Col>
           </Row>
           <p

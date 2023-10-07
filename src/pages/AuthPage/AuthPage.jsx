@@ -42,7 +42,7 @@ const AuthPage = () => {
             {!isSignupVisible && (
               <div className="text-center">
                    <Login />
-                <Button className="custom-button" onClick={toggleSignupForm}>
+                <Button className="custom-button mt-2" onClick={toggleSignupForm}>
                   Sign Up
                 </Button>
               </div>
