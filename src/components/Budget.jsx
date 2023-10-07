@@ -38,18 +38,18 @@ const Budget = ({ details }) => {
   };
 
   return (
-<div className="budget container">
+<div className="budget">
       <h2 >
         <TbPigMoney style={{ marginRight: 10 }} />
         Budget Planner
       </h2>
-      <Table striped bordered >
+      <Table striped bordered variant="" size="sm">
         <thead>
           <tr>
-            <th style={{ color: '#7ba3ca' }} >Food</th>
-            <th style={{ color: '#7ba3ca' }}>Attractions</th>
-            <th style={{ color: '#7ba3ca' }}>Accommodation</th>
-            <th style={{ color: '#7ba3ca' }}>Total</th>
+            <th style={{ color: '#7ba3ca', textShadow: '1px 1px 1px rgba(0, 0, 0, 0.3)' }}>Food</th>
+            <th style={{ color: '#7ba3ca' , textShadow: '1px 1px 1px rgba(0, 0, 0, 0.3)'}}>Attractions</th>
+            <th style={{ color: '#7ba3ca', textShadow: '1px 1px 1px rgba(0, 0, 0, 0.3)' }}>Accommodation</th>
+            <th style={{ color: '#7ba3ca' , textShadow: '1px 1px 1px rgba(0, 0, 0, 0.3)'}}>Total</th>
           </tr>
         </thead>
         <tbody>
