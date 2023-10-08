@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Nav from "./components/NavComponent";
 import Home from "./pages/Home";
 import MyTrip from "./pages/MyTrip";
 import TripIndex from "./pages/TripIndex";
@@ -13,7 +12,6 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import Auth from "./pages/AuthPage/Auth";
 import NavComponent from "./components/NavComponent";
 
-
 function App() {
   const [trips, setTrips] = useState([]);
 
@@ -23,9 +21,10 @@ function App() {
       .then((data) => setTrips(data));
   }, []);
 
+  console.log(trips);
+
   return (
     <div>
-    
       <header>
         <NavComponent />
       </header>
@@ -40,7 +39,7 @@ function App() {
             element={
               <Auth>
                 {" "}
-                <Home data={trips} />
+                <Home data={trips} setData={setTrips} />
               </Auth>
             }
           />
@@ -48,7 +47,7 @@ function App() {
             path="/trips"
             element={
               <Auth>
-                <TripIndex data={trips} />
+                <TripIndex data={trips} setData={setTrips} />
               </Auth>
             }
           />
@@ -56,7 +55,7 @@ function App() {
             path="/trips/:title"
             element={
               <Auth>
-                <MyTrip data={trips} />
+                <MyTrip data={trips} setData={setTrips} />
               </Auth>
             }
           />

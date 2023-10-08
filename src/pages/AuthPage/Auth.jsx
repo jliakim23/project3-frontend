@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Auth = (props) => {
-    const currentUser = localStorage.getItem('currentUser');
-    let loginCheck  
-    currentUser ? loginCheck = true : loginCheck = false
-    const [isLoggedin, setIsLoggedin] = useState(loginCheck);
-    const navigate = useNavigate();
+  const currentUser = localStorage.getItem("currentUser");
 
-   
-    useEffect(() => { if (!isLoggedin) navigate('/login')},[isLoggedin])
-  return (
-    <div>
-      {props.children}
-    </div>
-  )
-}
+  const navigate = useNavigate();
 
-export default Auth
+  useEffect(() => {
+    if (!currentUser) navigate("/login");
+  }, [currentUser, navigate]);
+  return <div>{props.children}</div>;
+};
+
+export default Auth;

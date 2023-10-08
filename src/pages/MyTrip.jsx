@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Checklist from "../components/Checklist";
 import Budget from "../components/Budget";
 import { BsCalendarEvent } from "react-icons/bs";
 import { CgDetailsMore } from "react-icons/cg";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
-const MyTrip = ({ data }) => {
+const MyTrip = ({ data, setData }) => {
   const params = useParams();
+  const navigate = useNavigate();
+
   const [isEditing, setIsEditing] = useState(false);
   const [editedTrip, setEditedTrip] = useState({
     title: "",
@@ -27,7 +29,6 @@ const MyTrip = ({ data }) => {
   };
 
   const handleSaveClick = () => {
- 
     const editedTripData = {
       title: editedTrip.title,
       startDate: editedTrip.startDate,
@@ -36,7 +37,7 @@ const MyTrip = ({ data }) => {
     };
 
     fetch(`${process.env.REACT_APP_API_URL}/plan/${tripIdToEdit}`, {
-      method: "PUT", 
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -46,10 +47,33 @@ const MyTrip = ({ data }) => {
       .then((data) => {
         console.log("Trip updated:", data);
 
-        setIsEditing(false); 
-        data((prevTrips) =>
+        setIsEditing(false);
+        setData((prevTrips) =>
           prevTrips.map((trip) =>
             trip._id === tripIdToEdit ? { ...trip, ...editedTripData } : trip
+          )
+        );
+        navigate(`/trips/${data.title.replace(/ /g, "_")}`);
+      })
+      .catch((error) => {
+        console.error("Error updating trip:", error);
+      });
+  };
+
+  const handleModalUpdate = (updatedTrip) => {
+    fetch(`${process.env.REACT_APP_API_URL}/plan/${updatedTrip._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedTrip),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Trip updated:", data);
+        setData((prevTrips) =>
+          prevTrips.map((trip) =>
+            trip._id === updatedTrip._id ? { ...trip, ...updatedTrip } : trip
           )
         );
       })
@@ -134,9 +158,9 @@ const MyTrip = ({ data }) => {
   return (
     <div className="tripIdPage">
       <Container>
-        <div className="grey-background" >
+        <div className="grey-background">
           <Row className="mt-2">
-            <Col >
+            <Col>
               <h1
                 className="header"
                 style={{
@@ -198,8 +222,12 @@ const MyTrip = ({ data }) => {
                         }
                       />
                     </Form.Group>
-                    
-                    <Button style={{backgroundColor: 'rgba(78, 174, 212, 0.7)'}} size="sm" onClick={handleSaveClick}>
+
+                    <Button
+                      style={{ backgroundColor: "rgba(78, 174, 212, 0.7)" }}
+                      size="sm"
+                      onClick={handleSaveClick}
+                    >
                       Save
                     </Button>
                   </Form>
@@ -225,20 +253,25 @@ const MyTrip = ({ data }) => {
                 <CgDetailsMore style={{ marginRight: 5 }} /> {trip.description}
               </p>
 
-              <Button style={{backgroundColor: 'rgba(78, 174, 212, 0.4)'}}   size="sm"  onClick={() => handleEditClick(trip._id)}>Edit</Button>
+              <Button
+                style={{ backgroundColor: "rgba(78, 174, 212, 0.4)" }}
+                size="sm"
+                onClick={() => handleEditClick(trip._id)}
+              >
+                Edit
+              </Button>
             </Col>
           </Row>
 
-          <p
+          <span
             style={{
               color: "white",
               textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
             }}
-          > 
-          <Checklist list={trip.checklist} type="to pack" />
-            <Budget details={trip.budget} />
-           
-          </p>
+          >
+            <Checklist list={trip.checklist} type="to pack" />
+            <Budget details={trip} updateTrip={handleModalUpdate} />
+          </span>
         </div>
       </Container>
     </div>

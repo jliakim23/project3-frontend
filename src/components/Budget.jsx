@@ -1,40 +1,42 @@
-import React, { useState } from "react";
 import ModalInput from "./ModalInput";
 import { TbPigMoney } from "react-icons/tb";
 import { Table } from "react-bootstrap";
 
-const Budget = ({ details }) => {
-  const [budget, setBudget] = useState(details);
+const Budget = ({ details, updateTrip }) => {
+  const budget = details.budget;
 
   const handleSetValue = (e) => {
     // console.log(e.target);
     let { name, value } = e.target;
     value = Number(parseFloat(value));
+    let editedBudget;
 
     if (name === "foodAmount") {
-      setBudget({
+      editedBudget = {
         ...budget,
         foodAmount: value,
         totalAmount:
           value + budget.attractionAmount + budget.accommodationAmount,
-      });
+      };
     }
 
     if (name === "attractionAmount") {
-      setBudget({
+      editedBudget = {
         ...budget,
         attractionAmount: value,
         totalAmount: value + budget.foodAmount + budget.accommodationAmount,
-      });
+      };
     }
 
     if (name === "accommodationAmount") {
-      setBudget({
+      editedBudget = {
         ...budget,
         accommodationAmount: value,
         totalAmount: value + budget.foodAmount + budget.attractionAmount,
-      });
+      };
     }
+
+    updateTrip({ ...details, budget: editedBudget });
   };
 
   return (
@@ -51,7 +53,7 @@ const Budget = ({ details }) => {
                 style={{
                   color: "#7ba3ca",
                   textShadow: "1px 1px 1px rgba(0, 0, 0, 0.3)",
-                  fontSize: '13px'
+                  fontSize: "13px",
                 }}
               >
                 Food
@@ -60,7 +62,7 @@ const Budget = ({ details }) => {
                 style={{
                   color: "#7ba3ca",
                   textShadow: "1px 1px 1px rgba(0, 0, 0, 0.3)",
-                  fontSize: '13px'
+                  fontSize: "13px",
                 }}
               >
                 Attractions
@@ -69,7 +71,7 @@ const Budget = ({ details }) => {
                 style={{
                   color: "#7ba3ca",
                   textShadow: "1px 1px 1px rgba(0, 0, 0, 0.3)",
-                  fontSize: '13px'
+                  fontSize: "13px",
                 }}
               >
                 Accommodation
@@ -78,7 +80,7 @@ const Budget = ({ details }) => {
                 style={{
                   color: "#7ba3ca",
                   textShadow: "1px 1px 1px rgba(0, 0, 0, 0.3)",
-                  fontSize: '15px'
+                  fontSize: "15px",
                 }}
               >
                 Total

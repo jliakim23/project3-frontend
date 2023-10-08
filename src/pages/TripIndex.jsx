@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Form, Button, ListGroup, Modal} from "react-bootstrap";
-
+import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
 
 const TripIndex = ({ data }) => {
   const [form, setForm] = useState({
@@ -11,7 +10,7 @@ const TripIndex = ({ data }) => {
     description: "",
   });
 
-  const [trips, setTrips] = useState(data); 
+  const [trips, setTrips] = useState(data);
   useEffect(() => {
     setTrips(data);
   }, [data]);
@@ -61,74 +60,89 @@ const TripIndex = ({ data }) => {
 
   return (
     <div className="addTripsPage">
-    <Container>
-    <Row>
-      <Col md={6}>
-        <h1 style= {{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>Trips</h1>
-        <ListGroup>
-          {data.map((trip) => {
-            const titleUrl = trip.title.replace(/\s+/g, "_");
-            return (
-              <ListGroup.Item key={trip._id}>
-              <Row>
-                <Col>
-                  <Link to={`/trips/${titleUrl}`}>{trip.title}</Link>
-                </Col>
-                <Col xs="auto">
-                  <Button
-                    className='custom-button ml-2'  
-                    onClick={() => handleDeleteTrip(trip._id)}
-                  >
-                    X
-                  </Button>
-                </Col>
-              </Row>
-            </ListGroup.Item>
-            );
-          })}
-        </ListGroup>
-      </Col>
-      <Col md={6}>
-        <h2 style={{ color: 'white', textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)' }}>Add a Trip</h2>
-        <Form onSubmit={handleAddTrip}>
-          <Form.Group>
-           
-            <Form.Control
-              type="text"
-              name="title"
-              placeholder="Title (must be unique)"
-              onChange={handleFormChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              type="date"
-              name="startDate"
-              onChange={handleFormChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              type="date"
-              name="endDate"
-              onChange={handleFormChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              type="text"
-              name="description"
-              placeholder="Brief description"
-              onChange={handleFormChange}
-            />
-          </Form.Group>
-          <Button className='custom-button mt-3' type="submit">Add Trip</Button>
-        </Form>
-      </Col>
-    </Row>
-  </Container>
-  </div>
-);
+      <Container>
+        <Row>
+          <Col md={6}>
+            <h1
+              style={{
+                color: "white",
+                textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              Trips
+            </h1>
+            <ListGroup>
+              {data.map((trip) => {
+                const titleUrl = trip.title.replace(/\s+/g, "_");
+                return (
+                  <ListGroup.Item key={trip._id}>
+                    <Row>
+                      <Col>
+                        <Link to={`/trips/${titleUrl}`}>{trip.title}</Link>
+                      </Col>
+                      <Col xs="auto">
+                        <Button
+                          className="custom-button ml-2"
+                          onClick={() => handleDeleteTrip(trip._id)}
+                        >
+                          X
+                        </Button>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                );
+              })}
+            </ListGroup>
+          </Col>
+          <Col md={6}>
+            <h2
+              style={{
+                color: "white",
+                textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              Add a Trip
+            </h2>
+            <Form onSubmit={handleAddTrip}>
+              <Form.Group>
+                <Form.Control
+                  type="text"
+                  name="title"
+                  placeholder="Title (must be unique)"
+                  onChange={handleFormChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  type="date"
+                  name="startDate"
+                  onChange={handleFormChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  type="date"
+                  name="endDate"
+                  onChange={handleFormChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  type="text"
+                  name="description"
+                  placeholder="Brief description"
+                  onChange={handleFormChange}
+                />
+              </Form.Group>
+              <Button className="custom-button mt-3" type="submit">
+                Add Trip
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 };
 
 export default TripIndex;
