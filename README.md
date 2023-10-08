@@ -1,6 +1,8 @@
 # Travel Advisor - React Frontend
 
-For our SEI Project #3, we'll be building an app to assist in planning trips. The main features will help users be more prepared and organized with packing and budgeting. As stretch golas, we've got ideas to integrate Google Maps to find places to stay and eat, and ChatGPT to make packing & budgeting suggestions.
+For our SEI Project #3, we've begun building an app to assist in planning trips. The main features will help users be more prepared and organized with packing and budgeting. As stretch golas, we've got ideas to integrate Google Maps to find places to stay and eat, and ChatGPT to make packing & budgeting suggestions.
+
+**Live site:** [https://trip-planner-dn6v.onrender.com](https://trip-planner-dn6v.onrender.com) _(Please account for extra loading time after a period of inactivity)_
 
 ### User Stories
 
